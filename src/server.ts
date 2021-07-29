@@ -6,8 +6,11 @@ import compress from 'koa-compress';
 import helmet from 'koa-helmet';
 import { Server } from 'http';
 import apiRouter from './router';
+import { logger, requestLogger } from './utils/logger';
 
-export const koaLogger = new KoaReqLogger({});
+export const koaLogger = new KoaReqLogger({
+    pinoInstance: requestLogger,
+});
 
 const app = new Koa();
 
@@ -21,14 +24,14 @@ app.use(koaLogger.getMiddleware())
     )
     .use(apiRouter.routes());
 const port = process.env.PORT || 1337;
-console.info(`Server running on port http://localhost:${port} 🚀`);
+logger.info(`Server running on port http://localhost:${port} 🚀`);
 const server = app.listen(port);
 
 function shutDown(app: Server): void {
-    console.info('SIGTERM signal received. Closing http server...');
+    logger.info('SIGTERM signal received. Closing http server...');
 
     app.close(() => {
-        console.info('Http server closed.');
+        logger.info('Http server closed.');
         process.exit(0);
         // Disconnect DB like mongo or postgres here
         // disconnect(() => {
