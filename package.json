@@ -1,0 +1,25 @@
+{
+  "name": "elastic-search-demo",
+  "version": "1.0.0",
+  "description": "A simple project showcasing usage of Elastic search using nodeJS",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ishan123456789/elastic-search.git"
+  },
+  "keywords": [
+    "Elastic",
+    "Search",
+    "NodeJS",
+    "TypeScript",
+    "KoaJS"
+  ],
+  "author": "Ishan Mahajan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ishan123456789/elastic-search/issues"
+  },
+  "homepage": "https://github.com/ishan123456789/elastic-search#readme"
+}
