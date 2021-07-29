@@ -46,9 +46,3 @@ export const requestLogger = (logger.child as any)(
         },
     },
 );
-
-export const pubsubLogger = createLogger({
-    name: 'service-logs',
-    level: isDev ? 'debug' : 'info',
-    enabled: !(process.env.NO_LOG == 'true'),
-});
