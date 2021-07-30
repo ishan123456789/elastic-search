@@ -4,6 +4,6 @@ import { ElasticSearchController } from './elasticSearch.controller';
 
 const router = new Router<DefaultState, Context>();
 
-router.get('/', ElasticSearchController.getContent);
+router.get('/', ElasticSearchController.getContent).get('/persist', ElasticSearchController.persistContent);
 
 export const elasticSearchRoutes = router.routes();

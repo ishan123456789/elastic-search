@@ -4,6 +4,22 @@
 2. Copy `.env-example` to `.env` making sure you update the values as per your environment.
 3. Run `yarn dev` or `npm run dev`
 
+### Setting up Elastic Search locally
+
+-   _Via docker:_
+    [Official Doc](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html)
+
+    `docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.13.4`
+
+    To check if it's up and running `curl -X GET "localhost:9200/_cat/nodes?v=true&pretty"`
+
+    Note\*\*: If deploying check [compatibility among the versions](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/installation.html#js-compatibility-matrix)
+
+-   _Via docker compose:_(Suggested)
+    Just run `docker-compose up -d` and make sure you've added `./data-docker` folder to shared space if using macOS.
+    You can access Kibana at: http://localhost:5601
+    You can access Elastic search client at: http://localhost:9200
+
 ### Running Tests
 
 Run `yarn test` or `npm test` to run jest on all the test files in src folder.
