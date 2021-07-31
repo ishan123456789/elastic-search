@@ -32,6 +32,7 @@
         "testEnvironment": "node"
     },
     "dependencies": {
+        "@elastic/elasticsearch": "^7.13.0",
         "@koa/cors": "^3.1.0",
         "dotenv": "^10.0.0",
         "koa": "^2.13.1",
@@ -40,6 +41,7 @@
         "koa-helmet": "^6.1.0",
         "koa-req-logger": "^1.5.3",
         "koa-router": "^10.0.0",
+        "moment": "^2.29.1",
         "pino": "^6.13.0"
     },
     "devDependencies": {

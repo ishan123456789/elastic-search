@@ -1,0 +1,363 @@
+{
+	"info": {
+		"_postman_id": "5b4b4c9e-a41f-44ec-a6b7-06c3828815c7",
+		"name": "elastic",
+		"description": "Elastic Search demo project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Home ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337"
+				},
+				"description": "To check service working"
+			},
+			"response": [
+				{
+					"name": "Home ",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1337",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Request-ID",
+							"value": "387557ed-09bf-4840-8a76-529e5da1f7b0"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 31 Jul 2021 06:14:43 GMT"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "15"
+						},
+						{
+							"key": "X-Response-Time",
+							"value": "4ms"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "Service working"
+				}
+			]
+		},
+		{
+			"name": "Persist records",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/es/persist?count=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"es",
+						"persist"
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Persist records",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1337/es/persist?count=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"es",
+								"persist"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Request-ID",
+							"value": "913770be-9fbd-49ab-b6f4-b743e546f348"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 31 Jul 2021 06:18:08 GMT"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "X-Response-Time",
+							"value": "1212ms"
+						},
+						{
+							"key": "Content-Length",
+							"value": "22"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"totalRecordsNow\": 12\n}"
+				}
+			]
+		},
+		{
+			"name": "Get records",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/es",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"es"
+					]
+				},
+				"description": "Get all records"
+			},
+			"response": [
+				{
+					"name": "Get records",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1337/es",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"es"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Request-ID",
+							"value": "49369008-a87a-4d25-b880-b22c23c19e63"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 31 Jul 2021 06:20:50 GMT"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "X-Response-Time",
+							"value": "40ms"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"total\": {\n        \"value\": 12,\n        \"relation\": \"eq\"\n    },\n    \"max_score\": 1,\n    \"hits\": [\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"zln5-noB_Qq-Lnzfq_SN\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-06-29T05:11:41.964Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"33006\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"LIVE\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VAST\"\n                },\n                \"impressions\": 929,\n                \"clicks\": 827,\n                \"conversion\": 56,\n                \"revenue\": 4811\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"xqkE-3oBGxtimFj45CxI\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-05-14T05:23:59.607Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"90315\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"VOD\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VAST\"\n                },\n                \"impressions\": 8805,\n                \"clicks\": 731,\n                \"conversion\": 94,\n                \"revenue\": 2319\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"93A2-3oBA0IcpXIyebNM\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-05-14T06:18:09.021Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"4605\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"LIVE\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VMAP\"\n                },\n                \"impressions\": 8459,\n                \"clicks\": 698,\n                \"conversion\": 47,\n                \"revenue\": 2838\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"-HA2-3oBA0IcpXIyebNM\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-05-30T06:18:09.025Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"programmatic\",\n                \"requests\": \"66382\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"VOD\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VMAP\"\n                },\n                \"impressions\": 2007,\n                \"clicks\": 264,\n                \"conversion\": 98,\n                \"revenue\": 9585\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"-XA2-3oBA0IcpXIyebNM\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-05-27T06:18:09.025Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"12686\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"VOD\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VAST\"\n                },\n                \"impressions\": 6772,\n                \"clicks\": 644,\n                \"conversion\": 86,\n                \"revenue\": 9222\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"-nA2-3oBA0IcpXIyebNM\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-04-25T06:18:09.025Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"24290\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"LIVE\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VMAP\"\n                },\n                \"impressions\": 912,\n                \"clicks\": 661,\n                \"conversion\": 18,\n                \"revenue\": 4679\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"-3A2-3oBA0IcpXIyebNM\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-07-22T06:18:09.025Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"78240\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"LIVE\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VMAP\"\n                },\n                \"impressions\": 5215,\n                \"clicks\": 597,\n                \"conversion\": 76,\n                \"revenue\": 5043\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"_HA2-3oBA0IcpXIyebNN\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-07-24T06:18:09.025Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"90265\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"LIVE\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VAST\"\n                },\n                \"impressions\": 9414,\n                \"clicks\": 650,\n                \"conversion\": 99,\n                \"revenue\": 6969\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"_XA2-3oBA0IcpXIyebNN\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-07-16T06:18:09.025Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"99762\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"VOD\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VMAP\"\n                },\n                \"impressions\": 8915,\n                \"clicks\": 328,\n                \"conversion\": 55,\n                \"revenue\": 1118\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"_nA2-3oBA0IcpXIyebNN\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-05-21T06:18:09.025Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"7490\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"VOD\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VAST\"\n                },\n                \"impressions\": 9644,\n                \"clicks\": 321,\n                \"conversion\": 2,\n                \"revenue\": 5302\n            }\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}
