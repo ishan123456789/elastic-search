@@ -45,4 +45,4 @@ export interface AppSchema {
     revenue: number;
 }
 
-export const INDEX_KEY = 'app';
+export const APP_INDEX_KEY = 'app';

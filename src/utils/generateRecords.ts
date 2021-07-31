@@ -45,9 +45,9 @@ const generateRecord = (count: number): AppSchema => {
         revenue: genRandomNumber(10000),
     };
 };
-export const generateRecords = (count: number): Array<AppSchema> => {
-    const N = process.env.ORDERS_PERSISTED_AT_ONCE || 1;
-    return Array(N)
+
+export const generateRecords = (count: number, N: number): Array<AppSchema> => {
+    return Array(N || 1000)
         .fill(null)
         .map((_, i) => generateRecord(count + i));
 };

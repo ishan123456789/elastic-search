@@ -51,6 +51,10 @@ Description: Code formatter using prettier
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 ```
 
+## Postman collections
+
+Available at [PostmanCollection](./PostmanCollection/elastic.postman_collection.json)
+
 ## Configurations
 
 TypeScript v4.3 [default tsconfig](https://github.com/microsoft/TypeScript-Node-Starter/blob/master/tsconfig.json)

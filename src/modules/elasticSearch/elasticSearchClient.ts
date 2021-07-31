@@ -1,6 +1,6 @@
 import { Client } from '@elastic/elasticsearch';
 import { logger } from '../../utils/logger';
-import { INDEX_KEY } from './elasticSearch.interfaces';
+import { APP_INDEX_KEY } from './elasticSearch.interfaces';
 // Export this to external file outside this module if used in different module as well
 export const elasticSearchClient = new Client({
     node: process.env.ELASTIC_SEARCH_URL || 'https://localhost:9200',
@@ -18,7 +18,7 @@ export const bulkInsertHelper = (index: string, doc: Array<{ [key: string]: any 
         // await elasticSearchClient.indices.refresh({ index: 'test' });
 
         const { body: exists } = await elasticSearchClient.indices.exists({
-            index: INDEX_KEY,
+            index: APP_INDEX_KEY,
         });
         console.log('exist', exists);
         if (exists) {
@@ -26,7 +26,7 @@ export const bulkInsertHelper = (index: string, doc: Array<{ [key: string]: any 
             return;
         }
         const result = await elasticSearchClient.indices.create({
-            index: INDEX_KEY,
+            index: APP_INDEX_KEY,
         });
         logger.info({ result }, 'Index created');
     } catch (err) {
