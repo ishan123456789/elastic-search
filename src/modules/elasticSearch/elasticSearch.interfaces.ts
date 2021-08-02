@@ -18,6 +18,7 @@ export interface AdTagData {
     ad_tag_id: string;
     tag_name: string;
     ad_type: AdType;
+    ad_metrics: AdMetrics;
 }
 
 export enum AdType {
@@ -43,6 +44,15 @@ export interface AppSchema {
     clicks: number;
     conversion: number;
     revenue: number;
+}
+
+export interface AdMetrics {
+    first_quarter: number;
+    mid_point: number;
+    third_quarter: number;
+    pause: number;
+    complete: number;
+    skip: number;
 }
 
 export const APP_INDEX_KEY = 'app';

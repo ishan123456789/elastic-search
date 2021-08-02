@@ -2,7 +2,8 @@
 
 1. Run `yarn` or `npm install`
 2. Copy `.env-example` to `.env` making sure you update the values as per your environment.
-3. Run `yarn dev` or `npm run dev`
+3. Run at the root of folder `docker-compose -f kibana.yml up --build --force-recreate`
+4. Run `yarn dev` or `npm run dev`
 
 ### Setting up Elastic Search locally
 
@@ -54,6 +55,24 @@ VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=esbenp.
 ## Postman collections
 
 Available at [PostmanCollection](./PostmanCollection/elastic.postman_collection.json)
+
+## Exporting dump to json file run:
+
+```
+yarn elasticdump \
+--input=http://localhost:9200/app \
+--output=./data.json \
+--type=data
+```
+
+```
+yarn elasticdump \
+--input=http://localhost:9200/app \
+--output=./data.json \
+--type=data --limit=10000
+```
+
+Where ./data.json would be the file containing the result
 
 ## Configurations
 

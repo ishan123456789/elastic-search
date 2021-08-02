@@ -13,14 +13,13 @@ export const bulkInsertHelper = (index: string, doc: Array<{ [key: string]: any 
 (async () => {
     try {
         // await elasticSearchClient.indices.delete({
-        //     index: 'test',
+        //     index: APP_INDEX_KEY,
         // });
-        // await elasticSearchClient.indices.refresh({ index: 'test' });
+        // await elasticSearchClient.indices.refresh({ index: APP_INDEX_KEY });
 
         const { body: exists } = await elasticSearchClient.indices.exists({
             index: APP_INDEX_KEY,
         });
-        console.log('exist', exists);
         if (exists) {
             logger.info('Index already exists');
             return;
