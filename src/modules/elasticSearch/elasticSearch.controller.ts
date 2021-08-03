@@ -1,16 +1,23 @@
 import { Context } from 'koa';
-import { generateRecords } from '../../utils/generateRecords';
 import { logger } from '../../utils/logger';
-import { APP_INDEX_KEY } from './elasticSearch.interfaces';
 import { ElasticSearchService } from './elasticSearch.service';
-import { bulkInsertHelper, elasticSearchClient } from './elasticSearchClient';
 
 export class ElasticSearchController {
     static async getContent(ctx: Context): Promise<void> {
         try {
-            ctx.body = await ElasticSearchService.getAllRecords();
+            const { count } = ctx.query;
+            ctx.body = await ElasticSearchService.getAllRecords(+count);
         } catch (err) {
             logger.error({ err }, 'Error while getting records');
+            ctx.throw('Error while fetching report');
+        }
+    }
+    static async getReport(ctx: Context): Promise<void> {
+        try {
+            ctx.body = await ElasticSearchService.getCampaignReport();
+        } catch (err) {
+            logger.error({ err }, 'Error while getting records');
+            ctx.throw('Error while fetching report');
         }
     }
     static async persistContent(ctx: Context): Promise<void> {
@@ -25,7 +32,6 @@ export class ElasticSearchController {
                 ctx.body = { totalRecordsNow: count };
             } else {
                 let toInsertRecords = +numberOfRecords;
-                console.log('Else');
                 ctx.body = `Batch processing has started check logs for more info`;
                 (async () => {
                     let batches = Math.ceil(+numberOfRecords / processedAtOnceThreshold);

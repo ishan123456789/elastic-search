@@ -6,7 +6,7 @@ export interface CampaignData {
 export interface ContentData {
     content_id: string;
     content_name: string;
-    content_type: string;
+    content_type: ContentType;
 }
 
 export enum ContentType {
@@ -36,7 +36,7 @@ export interface AppSchema {
     timestamp: Date;
     appowner_id: string;
     demand_type: DemandType;
-    requests: string;
+    requests: number;
     campaign_data: CampaignData;
     content_data: ContentData;
     ad_tag_data: AdTagData;
@@ -55,4 +55,29 @@ export interface AdMetrics {
     skip: number;
 }
 
+export interface ReportResponse {
+    timestamp: Date;
+    campaign_id: string;
+    campaign_name: string;
+    appowner_id: string;
+    appowner_name: string;
+    demand_type: string;
+    requests_count: number;
+    impressions_count: number;
+    clicks_count: number;
+    conversion_count: number;
+    revenue_count: number;
+    CTR: number;
+    eCPM: number;
+}
+
+export interface ReportQueryOptions {
+    dateFrom: Date | string;
+    dateTo: Date | string;
+    appowner_id: string;
+    campaign_id: string;
+    demand_type: string;
+    pageNumber: number;
+    totalCount: number;
+}
 export const APP_INDEX_KEY = 'app';

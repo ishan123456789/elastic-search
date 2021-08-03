@@ -26,6 +26,61 @@ export const bulkInsertHelper = (index: string, doc: Array<{ [key: string]: any 
         }
         const result = await elasticSearchClient.indices.create({
             index: APP_INDEX_KEY,
+            body: {
+                mappings: {
+                    properties: {
+                        appowner_id: {
+                            type: 'text',
+                            fielddata: true,
+                            fields: {
+                                raw: { type: 'keyword' },
+                            },
+                        },
+                        demand_type: { type: 'keyword' },
+                        campaign_data: {
+                            type: 'nested',
+                            include_in_parent: true,
+                            properties: {
+                                campaign_id: {
+                                    type: 'text',
+                                    fielddata: true,
+                                    fields: {
+                                        raw: { type: 'keyword' },
+                                    },
+                                },
+                            },
+                        },
+                        content_data: {
+                            type: 'nested',
+                            include_in_parent: true,
+                            properties: {
+                                content_id: {
+                                    type: 'text',
+                                    fielddata: true,
+                                    fields: {
+                                        raw: { type: 'keyword' },
+                                    },
+                                },
+                                content_type: { type: 'keyword' },
+                            },
+                        },
+                        ad_tag_data: {
+                            type: 'nested',
+                            include_in_parent: true,
+                            properties: {
+                                ad_tag_id: {
+                                    type: 'text',
+                                    fielddata: true,
+                                    fields: {
+                                        raw: { type: 'keyword' },
+                                    },
+                                },
+                                ad_type: { type: 'keyword' },
+                            },
+                        },
+                    },
+                },
+            },
         });
         logger.info({ result }, 'Index created');
     } catch (err) {
