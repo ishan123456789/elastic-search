@@ -1,6 +1,8 @@
 import { Context } from 'koa';
 import { logger } from '../../utils/logger';
+import { ReportQueryOptions } from './elasticSearch.interfaces';
 import { ElasticSearchService } from './elasticSearch.service';
+import { reportQueryParamsValidator } from './elasticSearch.validator';
 
 export class ElasticSearchController {
     static async getContent(ctx: Context): Promise<void> {
@@ -14,10 +16,22 @@ export class ElasticSearchController {
     }
     static async getReport(ctx: Context): Promise<void> {
         try {
-            ctx.body = await ElasticSearchService.getCampaignReport();
+            const queryParams = ctx.query;
+            console.log('ctx.query', ctx.query);
+            console.log(
+                'reportQueryParamsValidator.isValidSync(queryParams)',
+                reportQueryParamsValidator.isValidSync(queryParams),
+            );
+            console.log(
+                'reportQueryParamsValidator.validate(queryParams)',
+                reportQueryParamsValidator.validate(queryParams, { strict: true }),
+            );
+            const x = await reportQueryParamsValidator.validate(queryParams, { strict: true });
+            console.log(x);
+            ctx.body = await ElasticSearchService.getCampaignReport(queryParams as unknown as ReportQueryOptions);
         } catch (err) {
             logger.error({ err }, 'Error while getting records');
-            ctx.throw('Error while fetching report');
+            ctx.throw(err.type === 'ValidationError' ? 'Error while fetching report' : err?.message || '');
         }
     }
     static async persistContent(ctx: Context): Promise<void> {

@@ -55,8 +55,8 @@ export interface AdMetrics {
     skip: number;
 }
 
-export interface ReportResponse {
-    timestamp: Date;
+export interface CampaignReportResponse {
+    timestamp: Date | string;
     campaign_id: string;
     campaign_name: string;
     appowner_id: string;
@@ -71,13 +71,46 @@ export interface ReportResponse {
     eCPM: number;
 }
 
+export interface ReportResponse {
+    remainingDocuments: number;
+    documents: CampaignReportResponse[];
+}
 export interface ReportQueryOptions {
     dateFrom: Date | string;
     dateTo: Date | string;
     appowner_id: string;
     campaign_id: string;
     demand_type: string;
-    pageNumber: number;
-    totalCount: number;
+    page: number;
+    size: number;
+    groupBy: string;
 }
 export const APP_INDEX_KEY = 'app';
+
+export enum ReportType {
+    CAMPAIGN = 'campaign',
+    CONTENT = 'content',
+    ADTAG = 'adtag',
+}
+
+export enum GroupByKeys {
+    timestamp = 'timestamp',
+    appowner_id = 'appowner_id',
+    ad_tag_id = 'ad_tag_id',
+    ad_type = 'ad_type',
+    content_id = 'content_id',
+    content_type = 'content_type',
+    campaign_id = 'campaign_id',
+    demand_type = 'demand_type',
+}
+
+export const TranslateToKey: { [key in GroupByKeys]: string } = {
+    timestamp: `doc['timestamp'].value.toString('yyyy_MM_dd')`,
+    ad_tag_id: `doc['ad_tag_data.ad_tag_id']`,
+    ad_type: `doc['ad_tag_data.ad_type']`,
+    appowner_id: `doc['appowner_id']`,
+    campaign_id: `doc['campaign_data.campaign_id']`,
+    content_id: `doc['content_data.content_id']`,
+    content_type: `doc['content_data.content_type']`,
+    demand_type: `doc['demand_type']`,
+};

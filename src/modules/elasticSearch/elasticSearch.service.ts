@@ -1,38 +1,38 @@
-import moment from 'moment';
+import { transformElasticSearchOutput, transformQueryParams } from './helpers/elasticSearch.utils';
 import { generateRecords } from '../../utils/generateRecords';
 import { logger } from '../../utils/logger';
-import { AppSchema, APP_INDEX_KEY, ReportResponse } from './elasticSearch.interfaces';
+import {
+    AppSchema,
+    APP_INDEX_KEY,
+    ReportQueryOptions,
+    CampaignReportResponse,
+    ReportResponse,
+} from './elasticSearch.interfaces';
 import { bulkInsertHelper, elasticSearchClient } from './elasticSearchClient';
 
 export class ElasticSearchService {
-    static async getCampaignReport(): Promise<Array<ReportResponse>> {
+    static async getCampaignReport(options: ReportQueryOptions): Promise<ReportResponse> {
         await elasticSearchClient.indices.refresh({ index: APP_INDEX_KEY });
+        const { query, from, size, groupBy } = transformQueryParams(options);
         const isGroupByDemandType = true;
-
+        console.log('query', JSON.stringify({ query, groupBy }));
         const { body } = await elasticSearchClient.search({
             index: APP_INDEX_KEY,
             size: 0,
             body: {
-                query: {
-                    range: {
-                        timestamp: {
-                            gt: moment().subtract(100, 'days').toDate(),
-                            lt: moment().subtract(1, 'days').toDate(),
-                        },
-                    },
-                },
+                ...(Object.keys(query).length !== 0 && { query }),
                 // https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-datehistogram-aggregation.html#date-histogram-scripts
                 runtime_mappings: {
-                    'timestamp.date_of_week': {
+                    'timestamp.group_by': {
                         type: 'keyword',
                         // change the aggregation here to combine multiple
-                        script: "emit(doc['timestamp'].value.toString('yyyy_MM_dd')+doc['ad_tag_data.ad_tag_id'])",
+                        script: `emit(${groupBy})`,
                     },
                 },
                 aggs: {
                     grouped_by_app_owner_id: {
                         terms: {
-                            field: 'timestamp.date_of_week',
+                            field: 'timestamp.group_by',
                         },
 
                         aggs: {
@@ -69,8 +69,8 @@ export class ElasticSearchService {
                             },
                             bucket_paginate: {
                                 bucket_sort: {
-                                    from: 1,
-                                    size: 20,
+                                    from,
+                                    size,
                                 },
                             },
                         },
@@ -78,8 +78,8 @@ export class ElasticSearchService {
                 },
             },
         });
-        console.log('body', body);
-        return body?.aggregations || {};
+
+        return transformElasticSearchOutput(body?.aggregations as any);
     }
 
     static async getAllRecords(size?: number): Promise<Array<AppSchema>> {
