@@ -35,6 +35,7 @@ export enum DemandType {
 export interface AppSchema {
     timestamp: Date;
     appowner_id: string;
+    appowner_name: string;
     demand_type: DemandType;
     requests: number;
     campaign_data: CampaignData;
@@ -69,21 +70,36 @@ export interface CampaignReportResponse {
     revenue_count: number;
     CTR: number;
     eCPM: number;
+
+    ad_tag_id: string;
+    tag_name: string;
+    ad_type: string;
+    content_id: string;
+    content_name: string;
+    content_type: string;
+
+    first_quarter: number;
+    mid_point: number;
+    third_quarter: number;
+    pause: number;
+    complete: number;
+    skip: number;
 }
 
-export interface ReportResponse {
-    remainingDocuments: number;
-    documents: CampaignReportResponse[];
-}
 export interface ReportQueryOptions {
     dateFrom: Date | string;
     dateTo: Date | string;
     appowner_id: string;
     campaign_id: string;
     demand_type: string;
+    ad_tag_id: string;
+    ad_type: string;
+    content_id: string;
+    content_type: string;
     page: number;
     size: number;
     groupBy: string;
+    reportType: ReportType;
 }
 export const APP_INDEX_KEY = 'app';
 
@@ -103,14 +119,27 @@ export enum GroupByKeys {
     campaign_id = 'campaign_id',
     demand_type = 'demand_type',
 }
-
-export const TranslateToKey: { [key in GroupByKeys]: string } = {
-    timestamp: `doc['timestamp'].value.toString('yyyy_MM_dd')`,
-    ad_tag_id: `doc['ad_tag_data.ad_tag_id']`,
-    ad_type: `doc['ad_tag_data.ad_type']`,
-    appowner_id: `doc['appowner_id']`,
-    campaign_id: `doc['campaign_data.campaign_id']`,
-    content_id: `doc['content_data.content_id']`,
-    content_type: `doc['content_data.content_type']`,
-    demand_type: `doc['demand_type']`,
+export const TransformKey = {
+    ad_tag_id: 'ad_tag_data.ad_tag_id',
+    ad_type: 'ad_tag_data.ad_type',
+    tag_name: 'ad_tag_data.tag_name',
+    appowner_id: 'appowner_id',
+    campaign_id: 'campaign_data.campaign_id',
+    campaign_name: 'campaign_data.campaign_name',
+    content_id: 'content_data.content_id',
+    content_type: 'content_data.content_type',
+    content_name: 'content_data.content_name',
+    demand_type: 'demand_type',
+    appowner_name: 'demand_type',
+    timestamp: 'timestamp',
+};
+export const TranslateToGroupByKey: { [key in GroupByKeys]: string } = {
+    ad_tag_id: `doc['${TransformKey.ad_tag_id}']`,
+    ad_type: `doc['${TransformKey.ad_type}']`,
+    appowner_id: `doc['${TransformKey.appowner_id}']`,
+    campaign_id: `doc['${TransformKey.campaign_id}']`,
+    content_id: `doc['${TransformKey.content_id}']`,
+    content_type: `doc['${TransformKey.content_type}']`,
+    demand_type: `doc['${TransformKey.demand_type}']`,
+    timestamp: `doc['timestamp'].value.toString('yyyy_MM_dd_hh')`,
 };

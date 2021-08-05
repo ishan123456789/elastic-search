@@ -1,3 +1,5 @@
+import { AdTagData, AppSchema, CampaignData, ContentData } from '../elasticSearch.interfaces';
+
 export interface DefaultElasticSearchResponse {
     grouped_by_app_owner_id: GroupedByAppOwnerId;
 }
@@ -12,11 +14,17 @@ export interface Bucket {
     key: string;
     doc_count: number;
     top_docs: TopDocs;
-    conversion_stats: ConversionStats;
-    requests_stats: RequestsStats;
-    revenue_stats: RevenueStats;
-    clicks_stats: ClicksStats;
-    impressions_stats: ImpressionsStats;
+    conversion_stats: Stats;
+    requests_stats: Stats;
+    revenue_stats: Stats;
+    clicks_stats: Stats;
+    impressions_stats: Stats;
+    first_quarter_stats: Stats;
+    mid_point_stats: Stats;
+    third_quarter_stats: Stats;
+    pause_stats: Stats;
+    complete_stats: Stats;
+    skip_stats: Stats;
 }
 
 export interface TopDocs {
@@ -42,51 +50,11 @@ export interface Hit {
     _source: Source;
 }
 
-export interface Source {
-    appowner_id: string;
-    demand_type: string;
-    timestamp: string;
-    campaign_data: CampaignData;
+export interface Source extends AppSchema {
+    [x: string]: any;
 }
 
-export interface CampaignData {
-    campaign_name: string;
-    campaign_id: string;
-}
-
-export interface ConversionStats {
-    count: number;
-    min: number;
-    max: number;
-    avg: number;
-    sum: number;
-}
-
-export interface RequestsStats {
-    count: number;
-    min: number;
-    max: number;
-    avg: number;
-    sum: number;
-}
-
-export interface RevenueStats {
-    count: number;
-    min: number;
-    max: number;
-    avg: number;
-    sum: number;
-}
-
-export interface ClicksStats {
-    count: number;
-    min: number;
-    max: number;
-    avg: number;
-    sum: number;
-}
-
-export interface ImpressionsStats {
+export interface Stats {
     count: number;
     min: number;
     max: number;

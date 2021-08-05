@@ -4,18 +4,17 @@ import { logger } from '../../utils/logger';
 import {
     AppSchema,
     APP_INDEX_KEY,
-    ReportQueryOptions,
     CampaignReportResponse,
-    ReportResponse,
+    ReportQueryOptions,
+    TransformKey,
 } from './elasticSearch.interfaces';
 import { bulkInsertHelper, elasticSearchClient } from './elasticSearchClient';
 
 export class ElasticSearchService {
-    static async getCampaignReport(options: ReportQueryOptions): Promise<ReportResponse> {
+    static async getCampaignReport(options: ReportQueryOptions): Promise<CampaignReportResponse[]> {
         await elasticSearchClient.indices.refresh({ index: APP_INDEX_KEY });
         const { query, from, size, groupBy } = transformQueryParams(options);
-        const isGroupByDemandType = true;
-        console.log('query', JSON.stringify({ query, groupBy }));
+        logger.debug({ query, from, size, groupBy }, 'transformation result');
         const { body } = await elasticSearchClient.search({
             index: APP_INDEX_KEY,
             size: 0,
@@ -33,6 +32,8 @@ export class ElasticSearchService {
                     grouped_by_app_owner_id: {
                         terms: {
                             field: 'timestamp.group_by',
+                            // https://stackoverflow.com/a/59547465/6517383
+                            size: (from + 1) * size,
                         },
 
                         aggs: {
@@ -41,17 +42,11 @@ export class ElasticSearchService {
                                 top_hits: {
                                     size: 1,
                                     _source: {
-                                        include: [
-                                            'timestamp',
-                                            'campaign_data.campaign_id',
-                                            'campaign_data.campaign_name',
-                                            'appowner_id',
-                                            'appowner_name',
-                                            'demand_type',
-                                        ],
+                                        include: Object.values(TransformKey),
                                     },
                                 },
                             },
+                            // TODO: Change the below to sum to see if speed improves
                             clicks_stats: {
                                 stats: { field: 'clicks' },
                             },
@@ -67,6 +62,26 @@ export class ElasticSearchService {
                             requests_stats: {
                                 stats: { field: 'requests' },
                             },
+
+                            first_quarter_stats: {
+                                stats: { field: 'ad_tag_data.ad_metrics.first_quarter' },
+                            },
+                            mid_point_stats: {
+                                stats: { field: 'ad_tag_data.ad_metrics.mid_point' },
+                            },
+                            third_quarter_stats: {
+                                stats: { field: 'ad_tag_data.ad_metrics.third_quarter' },
+                            },
+                            pause_stats: {
+                                stats: { field: 'ad_tag_data.ad_metrics.pause' },
+                            },
+                            complete_stats: {
+                                stats: { field: 'ad_tag_data.ad_metrics.complete' },
+                            },
+                            skip_stats: {
+                                stats: { field: 'ad_tag_data.ad_metrics.skip' },
+                            },
+
                             bucket_paginate: {
                                 bucket_sort: {
                                     from,

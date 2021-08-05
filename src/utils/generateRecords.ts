@@ -20,9 +20,11 @@ export const getDemandType = (): DemandType => {
 };
 
 const generateRecord = (count: number): AppSchema => {
+    const appowner_id = getCurrentId(count, maxAppOwnerCount);
     return {
         timestamp: moment().subtract(genRandomNumber(100), 'days').toDate(),
-        appowner_id: getCurrentId(count, maxAppOwnerCount),
+        appowner_name: `${appowner_id} name`,
+        appowner_id,
         demand_type: getDemandType(),
         requests: genRandomNumber(100000),
         campaign_data: {

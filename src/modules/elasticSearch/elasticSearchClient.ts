@@ -12,9 +12,11 @@ export const bulkInsertHelper = (index: string, doc: Array<{ [key: string]: any 
 
 (async () => {
     try {
+        // Un comment and comment again to have index deleted and created again
         // await elasticSearchClient.indices.delete({
         //     index: APP_INDEX_KEY,
         // });
+        // return;
         // await elasticSearchClient.indices.refresh({ index: APP_INDEX_KEY });
 
         const { body: exists } = await elasticSearchClient.indices.exists({
