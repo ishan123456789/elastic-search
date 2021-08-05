@@ -120,7 +120,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:1337/es/persist?count=10",
+					"raw": "http://localhost:1337/es/persist?count=200000",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -133,7 +133,7 @@
 					"query": [
 						{
 							"key": "count",
-							"value": "10"
+							"value": "200000"
 						}
 					]
 				}
@@ -358,6 +358,97 @@
 					"body": "{\n    \"total\": {\n        \"value\": 12,\n        \"relation\": \"eq\"\n    },\n    \"max_score\": 1,\n    \"hits\": [\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"zln5-noB_Qq-Lnzfq_SN\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-06-29T05:11:41.964Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"33006\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"LIVE\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VAST\"\n                },\n                \"impressions\": 929,\n                \"clicks\": 827,\n                \"conversion\": 56,\n                \"revenue\": 4811\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"xqkE-3oBGxtimFj45CxI\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-05-14T05:23:59.607Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"90315\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"VOD\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VAST\"\n                },\n                \"impressions\": 8805,\n                \"clicks\": 731,\n                \"conversion\": 94,\n                \"revenue\": 2319\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"93A2-3oBA0IcpXIyebNM\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-05-14T06:18:09.021Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"4605\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"LIVE\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VMAP\"\n                },\n                \"impressions\": 8459,\n                \"clicks\": 698,\n                \"conversion\": 47,\n                \"revenue\": 2838\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"-HA2-3oBA0IcpXIyebNM\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-05-30T06:18:09.025Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"programmatic\",\n                \"requests\": \"66382\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"VOD\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VMAP\"\n                },\n                \"impressions\": 2007,\n                \"clicks\": 264,\n                \"conversion\": 98,\n                \"revenue\": 9585\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"-XA2-3oBA0IcpXIyebNM\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-05-27T06:18:09.025Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"12686\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"VOD\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VAST\"\n                },\n                \"impressions\": 6772,\n                \"clicks\": 644,\n                \"conversion\": 86,\n                \"revenue\": 9222\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"-nA2-3oBA0IcpXIyebNM\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-04-25T06:18:09.025Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"24290\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"LIVE\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VMAP\"\n                },\n                \"impressions\": 912,\n                \"clicks\": 661,\n                \"conversion\": 18,\n                \"revenue\": 4679\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"-3A2-3oBA0IcpXIyebNM\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-07-22T06:18:09.025Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"78240\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"LIVE\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VMAP\"\n                },\n                \"impressions\": 5215,\n                \"clicks\": 597,\n                \"conversion\": 76,\n                \"revenue\": 5043\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"_HA2-3oBA0IcpXIyebNN\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-07-24T06:18:09.025Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"90265\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"LIVE\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VAST\"\n                },\n                \"impressions\": 9414,\n                \"clicks\": 650,\n                \"conversion\": 99,\n                \"revenue\": 6969\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"_XA2-3oBA0IcpXIyebNN\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-07-16T06:18:09.025Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"99762\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"VOD\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VMAP\"\n                },\n                \"impressions\": 8915,\n                \"clicks\": 328,\n                \"conversion\": 55,\n                \"revenue\": 1118\n            }\n        },\n        {\n            \"_index\": \"app\",\n            \"_type\": \"_doc\",\n            \"_id\": \"_nA2-3oBA0IcpXIyebNN\",\n            \"_score\": 1,\n            \"_source\": {\n                \"timestamp\": \"2021-05-21T06:18:09.025Z\",\n                \"appowner_id\": \"1112\",\n                \"demand_type\": \"direct\",\n                \"requests\": \"7490\",\n                \"campaign_data\": {\n                    \"campaign_id\": \"1121\",\n                    \"campaign_name\": \"campaign 1121\"\n                },\n                \"content_data\": {\n                    \"content_id\": \"1211\",\n                    \"content_name\": \"Web series EP 1211\",\n                    \"content_type\": \"VOD\"\n                },\n                \"ad_tag_data\": {\n                    \"ad_tag_id\": \"2111\",\n                    \"tag_name\": \"automobile tag 2111\",\n                    \"ad_type\": \"VAST\"\n                },\n                \"impressions\": 9644,\n                \"clicks\": 321,\n                \"conversion\": 2,\n                \"revenue\": 5302\n            }\n        }\n    ]\n}"
 				}
 			]
+		},
+		{
+			"name": "Report",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/es/report/:reportType?dateFrom=2021-07-28&dateTo=2021-08-30&page=3&size=10&groupBy=timestamp,ad_tag_id,ad_type,appowner_id,campaign_id,content_id,content_type,demand_type&ad_tag_id=123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"es",
+						"report",
+						":reportType"
+					],
+					"query": [
+						{
+							"key": "dateFrom",
+							"value": "2021-07-28",
+							"description": "Both from and to are required for one to work"
+						},
+						{
+							"key": "dateTo",
+							"value": "2021-08-30",
+							"description": "Both from and to are required for one to work"
+						},
+						{
+							"key": "page",
+							"value": "3",
+							"description": "Starts from 0"
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"description": "Default 10"
+						},
+						{
+							"key": "groupBy",
+							"value": "timestamp,ad_tag_id,ad_type,appowner_id,campaign_id,content_id,content_type,demand_type",
+							"description": "Ex: timestamp,ad_tag_id,ad_type,appowner_id,campaign_id,content_id,content_type,demand_type   | comma seperated values  "
+						},
+						{
+							"key": "ad_tag_id",
+							"value": "123"
+						},
+						{
+							"key": "ad_type",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "content_id",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "content_type",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "appowner_id",
+							"value": " ",
+							"disabled": true
+						},
+						{
+							"key": "campaign_id",
+							"value": " ",
+							"disabled": true
+						},
+						{
+							"key": "demand_type",
+							"value": "direct",
+							"description": "direct || programmatic",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "reportType",
+							"value": "campaign",
+							"description": "campaign || content || adtag"
+						}
+					]
+				},
+				"description": "Generate report of given type"
+			},
+			"response": []
 		}
 	]
 }
