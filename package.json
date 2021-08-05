@@ -43,7 +43,8 @@
         "koa-req-logger": "^1.5.3",
         "koa-router": "^10.0.0",
         "moment": "^2.29.1",
-        "pino": "^6.13.0"
+        "pino": "^6.13.0",
+        "yup": "^0.32.9"
     },
     "devDependencies": {
         "@types/koa": "^2.13.4",
