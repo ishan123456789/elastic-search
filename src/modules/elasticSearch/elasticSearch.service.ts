@@ -1,17 +1,11 @@
 import { transformElasticSearchOutput, transformQueryParams } from './helpers/elasticSearch.utils';
 import { generateRecords } from '../../utils/generateRecords';
 import { logger } from '../../utils/logger';
-import {
-    AppSchema,
-    APP_INDEX_KEY,
-    CampaignReportResponse,
-    ReportQueryOptions,
-    TransformKey,
-} from './elasticSearch.interfaces';
+import { AppSchema, APP_INDEX_KEY, ReportResponse, ReportQueryOptions, TransformKey } from './elasticSearch.interfaces';
 import { bulkInsertHelper, elasticSearchClient } from './elasticSearchClient';
 
 export class ElasticSearchService {
-    static async getCampaignReport(options: ReportQueryOptions): Promise<CampaignReportResponse[]> {
+    static async getCampaignReport(options: ReportQueryOptions): Promise<ReportResponse[]> {
         await elasticSearchClient.indices.refresh({ index: APP_INDEX_KEY });
         const { query, from, size, groupBy } = transformQueryParams(options);
         logger.debug({ query, from, size, groupBy }, 'transformation result');

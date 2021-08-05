@@ -56,7 +56,7 @@ export interface AdMetrics {
     skip: number;
 }
 
-export interface CampaignReportResponse {
+export interface ReportResponse {
     timestamp: Date | string;
     campaign_id: string;
     campaign_name: string;

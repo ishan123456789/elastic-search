@@ -1,7 +1,8 @@
 import moment from 'moment';
+import { logger } from '../../../utils/logger';
 import {
     AppSchema,
-    CampaignReportResponse,
+    ReportResponse,
     GroupByKeys,
     ReportQueryOptions,
     ReportType,
@@ -106,8 +107,8 @@ export const transformQueryParams = (options: ReportQueryOptions): ReturnType =>
     return { query, from, size: toUseSize, groupBy };
 };
 
-export const transformElasticSearchOutput = (response: DefaultElasticSearchResponse): CampaignReportResponse[] => {
-    console.debug({ response: JSON.stringify(response) }, 'response from elastic search');
+export const transformElasticSearchOutput = (response: DefaultElasticSearchResponse): ReportResponse[] => {
+    logger.debug({ response: JSON.stringify(response) }, 'response from elastic search');
     return response.grouped_by_app_owner_id?.buckets.map((bucket) => {
         const source = bucket?.top_docs?.hits?.hits?.[0]?._source as unknown as AppSchema;
 
