@@ -141,5 +141,5 @@ export const TranslateToGroupByKey: { [key in GroupByKeys]: string } = {
     content_id: `doc['${TransformKey.content_id}']`,
     content_type: `doc['${TransformKey.content_type}']`,
     demand_type: `doc['${TransformKey.demand_type}']`,
-    timestamp: `doc['timestamp'].value.toString('yyyy_MM_dd_hh')`,
+    timestamp: `doc['timestamp_hh']`,
 };

@@ -14,14 +14,6 @@ export class ElasticSearchService {
             size: 0,
             body: {
                 ...(Object.keys(query).length !== 0 && { query }),
-                // https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-datehistogram-aggregation.html#date-histogram-scripts
-                runtime_mappings: {
-                    'timestamp.group_by': {
-                        type: 'keyword',
-                        // change the aggregation here to combine multiple
-                        script: `emit(${groupBy})`,
-                    },
-                },
                 aggs: {
                     grouped_by_app_owner_id: {
                         terms: {
@@ -112,7 +104,7 @@ export class ElasticSearchService {
         const records = generateRecords(initialCount, +numberOfRecords);
         logger.debug(`To Insert records count ${numberOfRecords}`);
         // logger.debug(records, 'To Insert records'); // Uncomment when record count is low
-        await elasticSearchClient.bulk({
+        const insertOutput = await elasticSearchClient.bulk({
             body: bulkInsertHelper(APP_INDEX_KEY, records),
         });
         await elasticSearchClient.indices.refresh({ index: APP_INDEX_KEY });
@@ -124,7 +116,7 @@ export class ElasticSearchService {
         const timeTaken = Math.floor((Date.now() - startedAt) / 1000);
         logger.debug('Total records increased to ' + count);
         logger.debug(`Took ${timeTaken} seconds`);
-        logger.debug((batches && `Expected total time: ${timeTaken * batches}`) || '');
+        logger.debug((batches && `Expected total time: ${(timeTaken * batches) / 60} minutes`) || '');
         return count;
     }
 }
