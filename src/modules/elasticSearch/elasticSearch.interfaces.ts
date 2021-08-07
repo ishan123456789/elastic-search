@@ -55,8 +55,11 @@ export interface AdMetrics {
     complete: number;
     skip: number;
 }
-
 export interface ReportResponse {
+    after_key: string;
+    documents: ReportResponseItem[];
+}
+export interface ReportResponseItem {
     timestamp: Date | string;
     campaign_id: string;
     campaign_name: string;
@@ -96,7 +99,7 @@ export interface ReportQueryOptions {
     ad_type: string;
     content_id: string;
     content_type: string;
-    page: number;
+    after_key: string;
     size: number;
     groupBy: string;
     reportType: ReportType;
@@ -130,16 +133,24 @@ export const TransformKey = {
     content_type: 'content_data.content_type',
     content_name: 'content_data.content_name',
     demand_type: 'demand_type',
-    appowner_name: 'demand_type',
+    appowner_name: 'appowner_name',
     timestamp: 'timestamp',
 };
-export const TranslateToGroupByKey: { [key in GroupByKeys]: string } = {
-    ad_tag_id: `doc['${TransformKey.ad_tag_id}']`,
-    ad_type: `doc['${TransformKey.ad_type}']`,
-    appowner_id: `doc['${TransformKey.appowner_id}']`,
-    campaign_id: `doc['${TransformKey.campaign_id}']`,
-    content_id: `doc['${TransformKey.content_id}']`,
-    content_type: `doc['${TransformKey.content_type}']`,
-    demand_type: `doc['${TransformKey.demand_type}']`,
-    timestamp: `doc['timestamp_hh']`,
+export const TranslateToGroupByKey: { [key in GroupByKeys]: any } = {
+    ad_tag_id: { ad_tag_id: { terms: { field: `${TransformKey.ad_tag_id}` } } },
+    ad_type: { ad_type: { terms: { field: `${TransformKey.ad_type}` } } },
+    appowner_id: { appowner_id: { terms: { field: `${TransformKey.appowner_id}` } } },
+    campaign_id: { campaign_id: { terms: { field: `${TransformKey.campaign_id}` } } },
+    content_id: { content_id: { terms: { field: `${TransformKey.content_id}` } } },
+    content_type: { content_type: { terms: { field: `${TransformKey.content_type}` } } },
+    demand_type: { demand_type: { terms: { field: `${TransformKey.demand_type}` } } },
+
+    timestamp: {
+        date: {
+            date_histogram: {
+                field: 'timestamp',
+                calendar_interval: '1h',
+            },
+        },
+    },
 };
