@@ -1,9 +1,9 @@
-import moment, { isDate } from 'moment';
+import moment from 'moment';
 import * as yup from 'yup';
 import { AdType, ContentType, DemandType, GroupByKeys, ReportType } from './elasticSearch.interfaces';
 
 export const isValidDate = (value: any): boolean => {
-    if (value === null || value === undefined) return true;
+    if (!value) return false;
     return moment(value, true).isValid();
 };
 export const validateRouteParam = yup
@@ -14,13 +14,14 @@ export const validateRouteParam = yup
 export const reportQueryParamsValidator = yup
     .object()
     .shape({
-        dateFrom: yup.string().test('isValid', 'From date is invalid', isValidDate).nullable(),
-        dateTo: yup.string().test('isValid', 'To date is invalid', isValidDate).nullable(),
+        dateFrom: yup.string().test('isValid', 'From date is invalid', isValidDate),
+        dateTo: yup.string().test('isValid', 'To date is invalid', isValidDate),
 
         appowner_id: yup.string().nullable(),
         campaign_id: yup.string().nullable(),
         ad_tag_id: yup.string().nullable(),
         content_id: yup.string().nullable(),
+        after_key: yup.string().nullable(),
 
         ad_type: yup.mixed().oneOf(Object.values(AdType)),
         content_type: yup.mixed().oneOf(Object.values(ContentType)),

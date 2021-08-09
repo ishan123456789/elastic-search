@@ -1,63 +1,69 @@
-import { AdTagData, AppSchema, CampaignData, ContentData } from '../elasticSearch.interfaces';
-
+import { AppSchema } from '../elasticSearch.interfaces';
 export interface DefaultElasticSearchResponse {
-    grouped_by_app_owner_id: GroupedByAppOwnerId;
+    grouped_values: GroupedValues;
 }
 
-export interface GroupedByAppOwnerId {
-    doc_count_error_upper_bound: number;
-    sum_other_doc_count: number;
+interface GroupedValues {
+    after_key: AfterKey;
     buckets: Bucket[];
 }
 
-export interface Bucket {
-    key: string;
+interface AfterKey {
+    date: number;
+    appowner_id: string;
+    campaign_id: string;
+}
+
+interface Bucket {
+    key: Key;
     doc_count: number;
+    third_quarter_stats: Stats;
     top_docs: TopDocs;
     conversion_stats: Stats;
+    mid_point_stats: Stats;
+    pause_stats: Stats;
+    first_quarter_stats: Stats;
+    skip_stats: Stats;
     requests_stats: Stats;
     revenue_stats: Stats;
     clicks_stats: Stats;
-    impressions_stats: Stats;
-    first_quarter_stats: Stats;
-    mid_point_stats: Stats;
-    third_quarter_stats: Stats;
-    pause_stats: Stats;
     complete_stats: Stats;
-    skip_stats: Stats;
+    impressions_stats: Stats;
 }
 
-export interface TopDocs {
+interface Key {
+    date: number;
+    appowner_id: string;
+    campaign_id: string;
+}
+
+interface Stats {
+    value: number;
+}
+
+interface TopDocs {
     hits: Hits;
 }
 
-export interface Hits {
+interface Hits {
     total: Total;
     max_score: number;
     hits: Hit[];
 }
 
-export interface Total {
+interface Total {
     value: number;
     relation: string;
 }
 
-export interface Hit {
+interface Hit {
     _index: string;
     _type: string;
     _id: string;
     _score: number;
-    _source: Source;
+    _source: AppSchema;
 }
 
-export interface Source extends AppSchema {
-    [x: string]: any;
-}
-
-export interface Stats {
-    count: number;
-    min: number;
-    max: number;
-    avg: number;
-    sum: number;
+interface Stats {
+    value: number;
 }
