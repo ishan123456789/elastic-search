@@ -2,8 +2,9 @@
 
 1. Run `yarn` or `npm install`
 2. Copy `.env-example` to `.env` making sure you update the values as per your environment.
-3. Run at the root of folder `docker-compose -f kibana.yml up --build --force-recreate`
-4. Run `yarn dev` or `npm run dev`
+3. Run `mkdir data-docker`
+4. Run at the root of folder `docker-compose -f kibana.yml up --build --force-recreate`
+5. Run `yarn dev` or `npm run dev`
 
 ### Setting up Elastic Search locally
 
